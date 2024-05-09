@@ -46,6 +46,7 @@ namespace ly
 
 		Tick(deltaTime);
 	}
+
 	void World::Render(sf::RenderWindow& window)
 	{
 		for (auto& actor : mActors)
@@ -53,6 +54,7 @@ namespace ly
 			actor->Render(window);
 		}
 	}
+
 	World::~World()
 	{
 
