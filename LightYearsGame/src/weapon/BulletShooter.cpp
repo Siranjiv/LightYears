@@ -1,3 +1,4 @@
+#include "framework/Core.h"
 #include "weapon/BulletShooter.h"
 
 namespace ly 
@@ -10,6 +11,16 @@ namespace ly
 	}
 	bool BulletShooter::IsOnCooldown() const
 	{
-		return false;
+		if (mCooldownClock.getElapsedTime().asSeconds() > mCooldownTime)
+		{
+			return false;
+		}
+
+		return true;
+	}
+	void BulletShooter::ShootImpl()
+	{
+		mCooldownClock.restart();
+		LOG("Shooting!");
 	}
 }
