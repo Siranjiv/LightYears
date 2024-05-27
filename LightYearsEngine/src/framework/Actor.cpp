@@ -108,4 +108,25 @@ namespace ly
 		sf::FloatRect bound = mSprite.getGlobalBounds();
 		mSprite.setOrigin(bound.width / 2, bound.height / 2);
 	}
+
+	bool Actor::IsActorOutOfWindowBounds() const
+	{
+		float windowWidth = GetWorld()->GetWindowSize().x;
+		float windowHeight = GetWorld()->GetWindowSize().y;
+
+		float width = GetActorGlobalBounds().width;
+		float height = GetActorGlobalBounds().height;
+
+		sf::Vector2f actorPos = GetActorLocation();
+
+		if (actorPos.x < -width)
+		{
+
+		}
+	}
+
+	sf::FloatRect Actor::GetActorGlobalBounds() const
+	{
+		return mSprite.getGlobalBounds();
+	}
 }
