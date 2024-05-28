@@ -60,6 +60,10 @@ namespace ly
 		{
 			mCleanCycleClock.restart();
 			AssetManager::Get().CleanCycle();
+			if (currentWorld)
+			{
+				currentWorld->CleanCycle();//This cleaning is better since this is lesser access and request to the memory
+			}
 		}
 	}
 

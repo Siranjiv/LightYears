@@ -121,8 +121,25 @@ namespace ly
 
 		if (actorPos.x < -width)
 		{
-
+			return true;
 		}
+
+		if (actorPos.x > windowWidth + width) 
+		{
+			return true;
+		}
+
+		if (actorPos.y < -height)
+		{
+			return true;
+		}
+
+		if (actorPos.y > windowHeight + height)
+		{
+			return true;
+		}
+
+		return false;
 	}
 
 	sf::FloatRect Actor::GetActorGlobalBounds() const
