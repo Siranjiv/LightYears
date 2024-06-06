@@ -39,6 +39,8 @@ namespace ly
 
 		//Interface for physics
 		void SetEnablePhysics(bool enable);
+		virtual void OnActorBeginOverlap(Actor* other);
+		virtual void OnActorEndOverlap(Actor* other);
 
 	private:
 		void InitiallizePhyics();

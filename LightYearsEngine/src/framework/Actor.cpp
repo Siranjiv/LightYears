@@ -68,11 +68,13 @@ namespace ly
 	void Actor::SetActorLocation(const sf::Vector2f& newLoc)
 	{
 		mSprite.setPosition(newLoc);
+		UpdatePhysicsBodyTransform();
 	}
 
 	void Actor::SetActorRotation(float newRot)
 	{
 		mSprite.setRotation(newRot);
+		UpdatePhysicsBodyTransform();
 	}
 
 	void Actor::AddActorLocationOffset(const sf::Vector2f& offsetAmt)
@@ -187,6 +189,16 @@ namespace ly
 		{
 			UnInitiallizePhyics();
 		}
+	}
+
+	void Actor::OnActorBeginOverlap(Actor* other)
+	{
+		LOG("Overlapped");
+	}
+
+	void Actor::OnActorEndOverlap(Actor* other)
+	{
+		LOG("Overlap Finished");
 	}
 
 	sf::FloatRect Actor::GetActorGlobalBounds() const

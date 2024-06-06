@@ -5,6 +5,13 @@
 namespace ly
 {
 	class Actor;
+
+	class PhysicsContactListener : public b2ContactListener
+	{
+		virtual void BeginContact(b2Contact* contact) override;
+		virtual void EndContact(b2Contact* contact) override;
+	};
+
 	//We are using singleton for this
 	class PhysicsSystem
 	{
@@ -23,5 +30,7 @@ namespace ly
 		float mPhysicsScale;// We use this because the box2d physics engine uses meters as the size
 		int mVelocityIterations;
 		int mPositionIterations;
+
+		PhysicsContactListener mContactListener;
 	};
 }
