@@ -22,9 +22,13 @@ namespace ly
 		void RemoveListener(b2Body* bodyToRemove);
 
 		float GetPhysicsScale() const { return mPhysicsScale; }
+
+		static void Cleanup();
+
 	protected:
 		PhysicsSystem();
 	private:
+		void ProcessPendingRemoveListeners();
 		static unique<PhysicsSystem> physicsSystem;
 		b2World mPhysicsWorld;
 		float mPhysicsScale;// We use this because the box2d physics engine uses meters as the size
@@ -32,5 +36,7 @@ namespace ly
 		int mPositionIterations;
 
 		PhysicsContactListener mContactListener;
+
+		Set<b2Body*> mPendingRemoveListeners;
 	};
 }

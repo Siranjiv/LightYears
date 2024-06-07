@@ -123,6 +123,7 @@ namespace ly
 		if (mPhysicsBody)
 		{
 			PhysicsSystem::Get().RemoveListener(mPhysicsBody);
+			mPhysicsBody = nullptr;
 		}
 	}
 
@@ -199,6 +200,12 @@ namespace ly
 	void Actor::OnActorEndOverlap(Actor* other)
 	{
 		LOG("Overlap Finished");
+	}
+
+	void Actor::Destroy()
+	{
+		UnInitiallizePhyics();
+		Object::Destroy();
 	}
 
 	sf::FloatRect Actor::GetActorGlobalBounds() const
